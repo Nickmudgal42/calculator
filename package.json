@@ -4,7 +4,7 @@
   "description": "A sleek, premium calculator web application built with HTML, CSS, and Vanilla JavaScript.",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",

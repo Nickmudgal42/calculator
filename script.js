@@ -107,6 +107,8 @@ class Calculator {
 }
 
 // UI Selectors
+let calculator;
+
 if (typeof document !== 'undefined') {
     const numberButtons = document.querySelectorAll('[data-number]');
     const operationButtons = document.querySelectorAll('[data-operation]');
@@ -116,7 +118,6 @@ if (typeof document !== 'undefined') {
     const previousOperandElement = document.getElementById('previous-operand');
     const currentOperandElement = document.getElementById('current-operand');
 
-    let calculator;
     if (previousOperandElement && currentOperandElement) {
         calculator = new Calculator(previousOperandElement, currentOperandElement);
 
