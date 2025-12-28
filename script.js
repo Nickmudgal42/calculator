@@ -107,57 +107,75 @@ class Calculator {
 }
 
 // UI Selectors
-const numberButtons = document.querySelectorAll('[data-number]');
-const operationButtons = document.querySelectorAll('[data-operation]');
-const equalsButton = document.querySelector('[data-equals]');
-const deleteButton = document.querySelector('[data-delete]');
-const clearButton = document.querySelector('[data-clear]');
-const previousOperandElement = document.getElementById('previous-operand');
-const currentOperandElement = document.getElementById('current-operand');
+if (typeof document !== 'undefined') {
+    const numberButtons = document.querySelectorAll('[data-number]');
+    const operationButtons = document.querySelectorAll('[data-operation]');
+    const equalsButton = document.querySelector('[data-equals]');
+    const deleteButton = document.querySelector('[data-delete]');
+    const clearButton = document.querySelector('[data-clear]');
+    const previousOperandElement = document.getElementById('previous-operand');
+    const currentOperandElement = document.getElementById('current-operand');
 
-const calculator = new Calculator(previousOperandElement, currentOperandElement);
+    let calculator;
+    if (previousOperandElement && currentOperandElement) {
+        calculator = new Calculator(previousOperandElement, currentOperandElement);
 
-numberButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        calculator.appendNumber(button.innerText);
-        calculator.updateDisplay();
-    });
-});
+        numberButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                calculator.appendNumber(button.innerText);
+                calculator.updateDisplay();
+            });
+        });
 
-operationButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        calculator.chooseOperation(button.innerText);
-        calculator.updateDisplay();
-    });
-});
+        operationButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                calculator.chooseOperation(button.innerText);
+                calculator.updateDisplay();
+            });
+        });
 
-equalsButton.addEventListener('click', button => {
-    calculator.compute();
-    calculator.updateDisplay();
-});
+        if (equalsButton) {
+            equalsButton.addEventListener('click', button => {
+                calculator.compute();
+                calculator.updateDisplay();
+            });
+        }
 
-clearButton.addEventListener('click', button => {
-    calculator.clear();
-    calculator.updateDisplay();
-});
+        if (clearButton) {
+            clearButton.addEventListener('click', button => {
+                calculator.clear();
+                calculator.updateDisplay();
+            });
+        }
 
-deleteButton.addEventListener('click', button => {
-    calculator.delete();
-    calculator.updateDisplay();
-});
+        if (deleteButton) {
+            deleteButton.addEventListener('click', button => {
+                calculator.delete();
+                calculator.updateDisplay();
+            });
+        }
+    }
+}
 
 // Keyboard Support
-window.addEventListener('keydown', e => {
-    if (e.key >= 0 && e.key <= 9) calculator.appendNumber(e.key);
-    if (e.key === '.') calculator.appendNumber('.');
-    if (e.key === '=' || e.key === 'Enter') calculator.compute();
-    if (e.key === 'Backspace') calculator.delete();
-    if (e.key === 'Escape') calculator.clear();
-    if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
-        let op = e.key;
-        if (op === '*') op = '×';
-        if (op === '/') op = '÷';
-        calculator.chooseOperation(op);
-    }
-    calculator.updateDisplay();
-});
+if (typeof window !== 'undefined') {
+    window.addEventListener('keydown', e => {
+        if (!calculator) return;
+        if (e.key >= 0 && e.key <= 9) calculator.appendNumber(e.key);
+        if (e.key === '.') calculator.appendNumber('.');
+        if (e.key === '=' || e.key === 'Enter') calculator.compute();
+        if (e.key === 'Backspace') calculator.delete();
+        if (e.key === 'Escape') calculator.clear();
+        if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+            let op = e.key;
+            if (op === '*') op = '×';
+            if (op === '/') op = '÷';
+            calculator.chooseOperation(op);
+        }
+        calculator.updateDisplay();
+    });
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = Calculator;
+}
