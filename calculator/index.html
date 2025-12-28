@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="A sleek, modern, and responsive calculator web app with a premium dark theme. Optimized for mobile and desktop.">
+    <title>Modern Glass Calculator | Antigravity</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="calculator-container">
+        <main class="calculator">
+            <header class="display">
+                <div id="previous-operand" class="previous-operand" aria-live="polite"></div>
+                <div id="current-operand" class="current-operand" aria-live="polite">0</div>
+            </header>
+
+            <div class="buttons-grid">
+                <!-- Row 1 -->
+                <button data-clear class="clear">C</button>
+                <button data-delete class="backspace">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                        <line x1="18" y1="9" x2="12" y2="15"></line>
+                        <line x1="12" y1="9" x2="18" y2="15"></line>
+                    </svg>
+                </button>
+                <button data-operation class="operator">÷</button>
+                <button data-operation class="operator">×</button>
+
+                <!-- Row 2 -->
+                <button data-number>7</button>
+                <button data-number>8</button>
+                <button data-number>9</button>
+                <button data-operation class="operator">-</button>
+
+                <!-- Row 3 -->
+                <button data-number>4</button>
+                <button data-number>5</button>
+                <button data-number>6</button>
+                <button data-operation class="operator">+</button>
+
+                <!-- Row 4 -->
+                <button data-number>1</button>
+                <button data-number>2</button>
+                <button data-number>3</button>
+                <button data-equals class="equals double-row">=</button>
+
+                <!-- Row 5 -->
+                <button data-number class="double-width">0</button>
+                <button data-number>.</button>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
